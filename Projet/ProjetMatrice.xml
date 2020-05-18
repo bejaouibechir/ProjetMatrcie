@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProjetMatrice</name>
+    </assembly>
+    <members>
+        <member name="F:Projet.Matrice._matrice">
+            <summary>
+            Champ privé qui détient les valeurs de la matrice
+            </summary>
+        </member>
+        <member name="P:Projet.Matrice.Lignes">
+            <summary>
+            Lignes de la matrice
+            </summary>
+        </member>
+        <member name="P:Projet.Matrice.Colonnes">
+            <summary>
+            Colonne de la matrice
+            </summary>
+        </member>
+        <member name="P:Projet.Matrice.Item(System.Int32,System.Int32)">
+            <summary>
+            Indexeur de la colonne
+            </summary>
+            <param name="ligne">Représente une ligne</param>
+            <param name="colone">Représente une colonne</param>
+            <returns></returns>
+        </member>
+        <member name="M:Projet.Matrice.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructeur avec paramètres
+            </summary>
+            <param name="Lignes">Représente les lignes</param>
+            <param name="Colonnes">Représente les colonnes</param>
+        </member>
+        <member name="M:Projet.Matrice.#ctor(System.Int32)">
+            <summary>
+            Constructeur avec paramètre
+            </summary>
+            <param name="m">Représente la dimension de la matrice carré</param>
+        </member>
+        <member name="M:Projet.Matrice.zero">
+            <summary>
+            Pour annuler une matrice
+            </summary>
+        </member>
+        <member name="M:Projet.Matrice.zero(System.Int32)">
+            <summary>
+            Une version statique de création d'une matrice nulle
+            </summary>
+            <param name="size"></param>
+            <returns>La matrice nulle</returns>
+        </member>
+        <member name="M:Projet.Matrice.identity">
+            <summary>
+            Vérification que la matrice est identité, rappelons que la matrice
+            identité est carré avec tout les valeurs sont mises à 1
+            </summary>
+        </member>
+        <member name="M:Projet.Matrice.hadamardProduct(Projet.Matrice)">
+            <summary>
+            Une méthode qui calcule le produit Hadamard de deux matrices
+            </summary>
+            <param name="matrice">Représente une matrice</param>
+        </member>
+        <member name="M:Projet.Matrice.addition(Projet.Matrice)">
+            <summary>
+            Une méthode qui permet le calcul de somme de deux matrices
+            </summary>
+            <param name="matrice">Représente une matrice</param>
+        </member>
+        <member name="M:Projet.Matrice.soustraction(Projet.Matrice)">
+            <summary>
+            Une méthode qui permet le calcul la différence de deux matrices
+            </summary>
+            <param name="matrice">Représente une matrice</param>
+        </member>
+        <member name="M:Projet.Matrice.inverser">
+            <summary>
+            Méthode qui permet le calcul de l'inverse d'une matrice
+            </summary>
+        </member>
+        <member name="M:Projet.Matrice.transpose">
+            <summary>
+            Méthode qui transpose une matrice
+            </summary>
+        </member>
+        <member name="M:Projet.Matrice.aléa">
+            <summary>
+            Créer des valeur aléatoires de matrice
+            </summary>
+        </member>
+        <member name="M:Projet.Matrice.clonner">
+            <summary>
+            Clonner une matrice
+            </summary>
+            <returns>Retourne une copie de la matrice</returns>
+        </member>
+        <member name="M:Projet.Matrice.affiche">
+            <summary>
+            Méthode pour afficher une matrice 
+            </summary>
+        </member>
+        <member name="P:Projet.Matrice.IsSquare">
+            <summary>
+            Vérification que la matrice est carré
+            </summary>
+        </member>
+    </members>
+</doc>

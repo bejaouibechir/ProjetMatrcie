@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Diagnostics;
+using System.Text;
 
 namespace Projet
 {
@@ -63,6 +64,7 @@ namespace Projet
                     }
                 }
             }
+            Debug.WriteLine("J'ajoute quelques choses dans le code");
             return result;
         }
 

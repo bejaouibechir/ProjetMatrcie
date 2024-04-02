@@ -1,0 +1,55 @@
+
+    public class Program
+    {  
+        static public void Main()
+        {
+            TPL<int, int> tpl = new TPL<int, int>(methode,3);
+            tpl.sendBuffer(1, 2, 3);
+            int [] result = tpl.recieveBuffer().Result;
+            foreach (var item in result)
+            {
+                System.Console.WriteLine(item);
+            }
+        }
+
+        private static int methode(int arg)
+        {
+            return arg * 2;
+        }
+    }
+
+    public class TPL<T,U>
+    {
+        public BufferBlock<T> Input;
+        public BufferBlock<U> OutPut;
+        public TransformBlock<T,U> Transform;
+        public int _capacity;
+        public TPL(Func<T,U> func,int capacity)
+        {
+            Transform = new TransformBlock<T, U>(func);
+            _capacity = capacity;
+        }
+
+        async public void sendBuffer(params T [] inputs)
+        {
+            Input = new BufferBlock<T>(new DataflowBlockOptions { BoundedCapacity = _capacity });
+            foreach (var item in inputs)
+            {
+                await Input.SendAsync(item);
+            }
+            Input.LinkTo(Transform);
+        }
+
+        async public Task<U[]> recieveBuffer()
+        {
+            U[] result = new U[_capacity];
+            OutPut = new BufferBlock<U>(new DataflowBlockOptions { BoundedCapacity = _capacity });
+            Transform.LinkTo(OutPut);
+            for (int i = 0; i < _capacity; i++)
+            {
+               result[i] = await OutPut.ReceiveAsync();
+            }
+            return result;
+        }
+
+    }

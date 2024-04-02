@@ -1,0 +1,56 @@
+ OrdresDataContext odc = new OrdresDataContext("Data Source=.;Initial Catalog=Ordres;Integrated Security=True");
+            Order order = new Order();
+            order.OrderID = 200;
+            order.CustomerID = 878;
+            odc.Orders.InsertOnSubmit(order);
+
+            try
+            {
+                odc.Log = Console.Out;
+                odc.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                odc.Log = Console.Out;
+                Console.WriteLine(e.Message);
+                
+            }
+
+
+  Order order = (from o in odc.Orders
+                          where o.CustomerID == 878
+                          select o).First();
+
+            odc.Orders.DeleteOnSubmit(order);
+
+            try
+            {
+                odc.Log = Console.Out;
+                odc.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                odc.Log = Console.Out;
+                Console.WriteLine(e.Message);
+                
+            }
+
+
+
+
+            Order order = (from o in odc.Orders
+                          where o.OrderID == 18399
+                          select o).First();
+            order.CustomerID = 873;
+           
+            try
+            {
+                odc.Log = Console.Out;
+                odc.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                odc.Log = Console.Out;
+                Console.WriteLine(e.Message);
+                
+            }

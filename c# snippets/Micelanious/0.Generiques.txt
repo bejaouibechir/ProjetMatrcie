@@ -1,0 +1,160 @@
+Exemple de Singleton avec Generique
+
+public class Singleton<T> where T : new()
+    {
+        static T _t;
+        protected Singleton()
+        {
+            
+        }
+        static public T Instance { get 
+            {
+               if(_t==null)
+                {
+                    _t = new T();
+                }
+                return _t;
+            } 
+        }
+    }
+public class MyProcess
+    {
+        /*
+           MyProcess myProcess = Singleton<MyProcess>.Instance;
+             MyProcess myProcess2 = Singleton<MyProcess>.Instance;
+             var proc = myProcess.getProcess("notepad.exe",@"D:\temp\log.txt");
+         */
+
+        public ProcessStartInfo getProcess(string processName,string arguments)
+        {
+            ProcessStartInfo startInfo = new ProcessStartInfo(processName);
+            startInfo.Arguments = arguments;
+            Process.Start(startInfo);
+            return startInfo;
+        }
+    }
+
+Exemple de mapper avec les génériques:
+
+  public class Mapper<U,T> where T : class,new()
+         where U : class,new()
+    {
+        static public T Map(U u)
+        {
+            T t = new T();
+            PropertyInfo [] t_properties = t.GetType().GetProperties();
+            PropertyInfo[] u_properties = u.GetType().GetProperties();
+
+            foreach (var property_t in t_properties)
+            {
+                foreach (var property_u in u_properties)
+                {
+                    if(property_t.Name==property_u.Name && 
+                        property_t.GetType()==property_u.GetType())
+                    {
+                        property_t.SetValue(t, property_u.GetValue(u)); 
+                        break;
+                    }
+                }    
+            }
+            return t;
+        }
+    }
+    
+
+Exemple de delegate et evenement
+public delegate void MyEventHandler<T>(object sender, T eventArgs) where T : EventArgs;
+
+    public class ColorEventArgs :EventArgs
+    {
+        public ConsoleColor Color { get; set; }
+
+        public ColorEventArgs(ConsoleColor color)
+        {
+            Color = color;
+        }
+    }
+    
+    public class Classe
+    {
+        private event MyEventHandler<EventArgs> _event;
+        public event MyEventHandler<EventArgs> Event
+        {
+            add { 
+                _event += value;
+                OnEventFired();
+            }
+            remove { _event -= value; }
+        }
+
+        protected void OnEventFired()
+        {
+            if (_event != null)
+                _event(this, new ColorEventArgs(ConsoleColor.Red));
+        }
+    }
+
+
+
+Exemple de covariance 
+
+public interface IUtilisation<out T>
+    {
+        T methode(Mere arg);
+    }
+
+    public class Utilisation : IUtilisation<Fille>
+    {
+        public Fille methode(Mere arg)
+        {
+            Console.WriteLine(arg.Nom);
+            return new Fille();
+        }
+    }
+
+
+ Fille fille = new Fille();
+
+            IUtilisation<Humain> utilisation = new Utilisation();
+            utilisation.methode(fille);
+
+
+Exemple de contravariance 
+
+/*Exemple de contravariance
+      MyList<Mere> meres = new MyList<Mere>(3);
+            meres[0] = new Mere();
+            meres[1] = new Mere();
+            IMyList<Fille> filles = meres;
+     
+     */
+
+    public interface IMyList<in T>{}
+
+    public class MyList<T> : IMyList<T>
+    {
+        T[] _t;
+        public MyList(int capacity){_t = new T[capacity];}
+        
+        public T this[int index]
+        {
+            get { return _t[index]; }
+            set { _t[index] = value; }
+        }
+        
+    }
+    public class GandMere { }
+    public class Mere :GandMere{public string Nom { get; set; }}
+    public class Fille :Mere {}
+    public class PetiteFille : Fille{ }
+
+
+
+
+
+
+
+
+
+
+

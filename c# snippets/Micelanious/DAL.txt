@@ -1,0 +1,553 @@
+ public class User
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public override string ToString()
+         => $"{Name}";
+    }
+
+//Factory 
+Cacher la complexité de l'operation 
+
+public class SQLServerUser
+    {
+        public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void UpdateUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void DeleteUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void ListUsers(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+    }
+
+    public class PostGresUser
+    {
+        public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+        public void UpdateUser(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+        public void DeleteUser(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+        public void ListUsers(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+    }
+
+
+
+
+public class SQLServerUser :UserFactory
+    {
+        new public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        new public void UpdateUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        new public void DeleteUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public class PostGresUser :UserFactory
+    {
+        new public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+        new public void UpdateUser(User user)
+          => Console.WriteLine($"Mise à jour de {user} à PostGres Server");
+        new public void DeleteUser(User user)
+          => Console.WriteLine($"Supression de {user} à PostGres Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public enum Operations { SQLServer,PostGres}
+
+    public class UserFactory
+    {
+        public Operations Kind { get; set; }
+
+          public UserFactory()
+         {
+
+         }
+
+         public UserFactory(Operations operations)
+         {
+            Kind = operations;
+         }
+
+         public void AddUser (User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().AddUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().AddUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void DeleteUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void ListUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().ListUsers();
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().ListUsers();
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+    }
+
+//Appel de factory 
+ UserFactory userfactory = new UserFactory(Operations.PostGres);
+            userfactory.AddUser(new User { Id = 1, Age = 40, Name = "Bechir" });
+
+
+
+
+
+//DAO
+  public class SQLServerUser :IUserDAO
+    {
+       
+         public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+         public void UpdateUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+         public void DeleteUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public class PostGresUser:IUserDAO 
+    {
+         public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+         public void UpdateUser(User user)
+          => Console.WriteLine($"Mise à jour de {user} à PostGres Server");
+         public void DeleteUser(User user)
+          => Console.WriteLine($"Supression de {user} à PostGres Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public enum Operations { SQLServer,PostGres}
+
+    public interface IUserDAO
+    {
+        void AddUser(User user);
+        void DeleteUser(User user);
+        void ListUsers();
+        void UpdateUser(User user);
+    }
+
+    public class UserDAO : IUserDAO
+    {
+        public Operations Kind { get; set; }
+
+        public UserDAO()
+        {
+
+        }
+
+        public UserDAO(Operations operations)
+        {
+            Kind = operations;
+        }
+
+        public void AddUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().AddUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().AddUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void DeleteUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void ListUsers()
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().ListUsers();
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().ListUsers();
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+    }
+
+
+//Implementation DAO
+
+ public class SQLServerUser :IUserDAO
+    {
+       
+         public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+         public void UpdateUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+         public void DeleteUser(User user)
+          => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public class PostGresUser:IUserDAO 
+    {
+         public void AddUser(User user)
+          => Console.WriteLine($"Ajout de {user} à PostGres Server");
+         public void UpdateUser(User user)
+          => Console.WriteLine($"Mise à jour de {user} à PostGres Server");
+         public void DeleteUser(User user)
+          => Console.WriteLine($"Supression de {user} à PostGres Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public class SQLServerUserV2 : IUserDAO
+    {
+
+        public void AddUser(User user)
+         => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void UpdateUser(User user)
+         => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void DeleteUser(User user)
+         => Console.WriteLine($"Ajout de {user} à SQL Server");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server");
+    }
+
+    public class PostGresUserV2 : IUserDAO
+    {
+        public void AddUser(User user)
+         => Console.WriteLine($"Ajout de {user} à PostGres Server version 2");
+        public void UpdateUser(User user)
+         => Console.WriteLine($"Mise à jour de {user} à PostGres Server version 2");
+        public void DeleteUser(User user)
+         => Console.WriteLine($"Supression de {user} à PostGres Server version 2");
+        public void ListUsers()
+          => Console.WriteLine($"Liste des utilisateurs à PostGres Server version 2");
+    }
+
+    public enum Operations { SQLServer,PostGres}
+
+    public interface IUserDAO
+    {
+        void AddUser(User user);
+        void DeleteUser(User user);
+        void ListUsers();
+        void UpdateUser(User user);
+    }
+
+    public class UserDAOV1 : IUserDAO
+    {
+        public Operations Kind { get; set; }
+
+        public UserDAOV1()
+        {
+
+        }
+
+        public UserDAOV1(Operations operations)
+        {
+            Kind = operations;
+        }
+
+        public void AddUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().AddUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().AddUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void DeleteUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void ListUsers()
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUser().ListUsers();
+                    break;
+                case Operations.PostGres:
+                    new PostGresUser().ListUsers();
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+    }
+
+
+    public class UserDAOV2 : IUserDAO
+    {
+        public Operations Kind { get; set; }
+
+        public UserDAOV2()
+        {
+
+        }
+
+        public UserDAOV2(Operations operations)
+        {
+            Kind = operations;
+        }
+
+        public void AddUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUserV2().AddUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUserV2().AddUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+
+        public void UpdateUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUserV2().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUserV2().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void DeleteUser(User user)
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUserV2().UpdateUser(user);
+                    break;
+                case Operations.PostGres:
+                    new PostGresUserV2().UpdateUser(user);
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+        public void ListUsers()
+        {
+            switch (Kind)
+            {
+                case Operations.SQLServer:
+                    new SQLServerUserV2().ListUsers();
+                    break;
+                case Operations.PostGres:
+                    new PostGresUserV2().ListUsers();
+                    break;
+                default:
+                    throw new InvalidOperationException("Something wrong");
+            }
+        }
+    }
+
+
+
+//Repository 
+
+  public interface IRepository<T>
+    {
+        void Add(T entity);
+        void Update(T entity);
+        void Delete(T entity);
+        List<T> List();
+    }
+
+    abstract public class Repository<T> : IRepository<T>
+    {
+        abstract public void Add(T entity);
+        abstract public void Delete(T entity);
+        abstract public List<T> List();
+        abstract public void Update(T entity);
+    }
+
+    public class UserRespository : Repository<User>
+    {
+        EntityFramework _ef;
+        public UserRespository(EntityFramework ef)
+        {
+            _ef = ef;
+        }
+
+        public override void Add(User entity)
+            => _ef.Add(entity);
+        public override void Delete(User entity)
+          => _ef.Delete(entity);
+        public override List<User> List()
+          => _ef.List();
+        public override void Update(User entity)
+          => _ef.Update(entity);
+        
+    }
+
+    //Necesité de ORM
+
+    public class EntityFramework
+    {
+        Model _model;
+        public EntityFramework(Model model)
+        {
+            _model = model;
+        }
+        
+        public  void Add(User entity)
+            => Console.WriteLine($"Ajout de {_model.User}");
+        public  void Delete(User entity)
+             => Console.WriteLine($"Supresion de {_model.User}");
+        public List<User> List()
+        {
+            Console.WriteLine($"Liste  des utilisateurs");
+            return new List<User>();
+        }
+
+        public  void Update(User entity)
+            => Console.WriteLine($"Mise à jour de {_model.User}");
+    }
+
+    //Model
+    public class Model
+    {
+        public User User { get; set; }
+        public List<User> Users { get; set; }
+
+        public Model()
+        {
+            User = new User();
+            Users = new List<User>();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+

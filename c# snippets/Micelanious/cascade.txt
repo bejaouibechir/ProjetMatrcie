@@ -1,0 +1,342 @@
+--SQL Server
+
+CREATE TABLE Auteurs
+(
+	Id int IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED ,
+	Nom nvarchar(50) NOT NULL
+)
+
+
+CREATE TABLE Livres
+(
+	Id int IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED ,
+	AuteurId int NULL,
+	Titre nvarchar(50) NOT NULL
+)
+
+CREATE TABLE Versions
+(
+	Id int IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+	LivreId int NULL,
+	[Version Number] int NULL,
+	Date int NULL
+)
+
+ALTER TABLE Livres DROP FK_Auteur_Id
+
+
+ALTER TABLE Livres
+ADD CONSTRAINT FK_Auteur_Id
+FOREIGN KEY([AuteurId]) 
+REFERENCES Auteurs([Id])
+ON DELETE NO ACTION
+
+
+ALTER TABLE Versions DROP FK_Livre_Id
+
+
+ALTER TABLE Versions
+ADD CONSTRAINT FK_Livre_Id
+FOREIGN KEY(LivreId) 
+REFERENCES Livres([Id])
+ON DELETE NO ACTION
+
+
+SELECT * FROM Auteurs
+SELECT * FROM Livres
+SELECT * FROM Versions
+
+DELETE  Auteurs 
+DBCC CHECKIDENT ('dbo.Auteurs', RESEED, 0)
+DELETE  Livres
+DBCC CHECKIDENT ('dbo.Livres', RESEED, 0)
+DELETE  Versions
+DBCC CHECKIDENT ('dbo.Versions', RESEED, 0)
+
+ALTER TABLE Livres ADD DEFAULT 9999  FOR AuteurId
+ALTER TABLE Versions ADD DEFAULT 9999  FOR LivreId
+
+
+INSERT INTO dbo.Auteurs(Nom)
+VALUES ('Sidney Atkinson'), --1
+('David Broussard'), --2
+('Jeff Dalton'), --3
+('Taz Diaz'), --4
+('Reza Dorrani'), --5
+('Ed Higgins'), --6
+('Matthew Dowst') --7
+
+
+INSERT INTO dbo.Livres(AuteurId,Titre)
+VALUES (1,'Powerpivot'),
+(1,'SSAS Tools'), --1
+(1,'Mdx Studio'), --2
+(1,'SSIS on Cluster'), --3
+(1,'Aggregations'), --4
+(2,'Microsoft Office 365'), --5
+(2,'The Cloud computing'), --6
+(3,'The Digital Transformation'), --7
+(4,'Azure Search'), --8
+(4,'Big Data'), --9
+(4,'Big Data & AI'), --10
+(5,'Sharepoint On Line'), --11
+(6,'User Authentication'), --12
+(7,'PowerShell Scripts'), --13
+(7,'Elastic Flow on Linux'), --14
+(7,'Log analytics') --15
+
+
+
+
+INSERT INTO Versions([LivreId],[Version Number],[Date])
+VALUES 
+(1,1,20180412),--1
+(1,2,20180812),
+(1,3,20180913),
+(2,1,20190412),
+(2,2,20190812),
+(2,3,20190913),
+(3,1,20190512),
+(3,2,20190612),
+(3,3,20190913),
+(4,1,20190512),
+(4,2,20190612),
+(4,3,20170913),
+(5,1,20170512),
+(5,2,20170612),
+(5,3,20170913),
+(6,1,20160512),--16
+(6,2,20160612),
+(6,3,20160913),
+(7,1,20150412),
+(7,2,20150512),
+(7,3,20150913),
+(8,1,20190412),
+(8,2,20190512),
+(8,3,20190913),
+(9,1,20190412),
+(9,2,20190512),
+(9,3,20190913),
+(10,1,20190412),
+(10,2,20190512),
+(11,1,20190412),
+(11,2,20190512),
+(11,3,20190913),
+(12,1,20190403),
+(12,2,20190515),
+(12,3,20190914),
+(13,1,20190403),
+(13,2,20190515),
+(13,3,20190914),
+(14,1,20190403),
+(14,2,20190515),
+(14,3,20190914),
+(15,1,20190403),
+(15,2,20190515),
+(15,3,20190914) -- 44
+
+
+--POSTGRESQL
+
+psql -U postgres
+
+create user bechir with password '123';
+CREATE DATABASE test;
+grant all privileges on database test to bechir;
+
+
+CREATE TABLE auteurs
+(
+	id int NOT NULL PRIMARY KEY,
+	nom varchar(50) NOT NULL
+);
+
+
+CREATE TABLE livres
+(
+	id int NOT NULL PRIMARY KEY,
+	auteurId int NULL,
+	titre varchar(50) NOT NULL
+);
+
+CREATE TABLE versions
+(
+	id int  NOT NULL PRIMARY KEY,
+	livreId int NULL,
+	versionNumber int,
+	date int 
+);
+
+ALTER TABLE livres DROP CONSTRAINT fk_auteur_id;
+ALTER TABLE versions DROP CONSTRAINT fk_livre_id;
+
+ALTER TABLE livres ALTER COLUMN auteurid SET DEFAULT 9999; 
+ALTER TABLE versions ALTER COLUMN livreid SET DEFAULT 9999;  
+
+ALTER TABLE livres
+ADD CONSTRAINT fk_auteur_id
+FOREIGN KEY(auteurid) 
+REFERENCES auteurs(id)
+ON DELETE RESTRICT;
+
+
+ALTER TABLE versions
+ADD CONSTRAINT fk_livre_id
+FOREIGN KEY(livreid) 
+REFERENCES livres(id)
+ON DELETE RESTRICT;
+
+
+SELECT * FROM Auteurs;
+SELECT * FROM Livres;
+SELECT * FROM Versions;
+
+DELETE  auteurs WHERE Id=1;
+DELETE  livres  WHERE Id=1;
+DELETE  versions WHERE Id=1;
+
+DELETE FROM auteurs WHERE id=1 ;
+
+
+DROP TABLE versions;
+DROP TABLE livres;
+DROP TABLE auteurs ;
+
+DROP DATABASE test;
+
+
+
+
+INSERT INTO Auteurs(Id,Nom)
+VALUES (1,'Sidney Atkinson'), --1
+(2,'David Broussard'), --2 
+(3,'Jeff Dalton'), --3
+(4,'Taz Diaz'), --4
+(5,'Reza Dorrani'), --5
+(6,'Ed Higgins'), --6
+(7,'Matthew Dowst'); --7
+
+
+INSERT INTO Livres(Id,AuteurId,Titre)
+VALUES (1,1,'Powerpivot'),
+(2,1,'SSAS Tools'), --1
+(3,1,'Mdx Studio'), --2
+(4,1,'SSIS on Cluster'), --3
+(5,1,'Aggregations'), --4
+(6,2,'Microsoft Office 365'), --5
+(7,2,'The Cloud computing'), --6
+(8,3,'The Digital Transformation'), --7
+(9,4,'Azure Search'), --8
+(10,4,'Big Data'), --9
+(11,4,'Big Data & AI'), --10
+(12,5,'Sharepoint On Line'), --11
+(13,6,'User Authentication'), --12
+(14,7,'PowerShell Scripts'), --13
+(15,7,'Elastic Flow on Linux'), --14
+(16,7,'Log analytics'); --15
+
+
+
+
+INSERT INTO Versions(Id,LivreId,VersionNumber,Date)
+VALUES 
+(1,1,1,20180412),--1
+(2,1,2,20180812),
+(3,1,3,20180913),
+(4,2,1,20190412),
+(5,2,2,20190812),
+(6,2,3,20190913),
+(7,3,1,20190512),
+(8,3,2,20190612),
+(9,3,3,20190913),
+(10,4,1,20190512),
+(11,4,2,20190612),
+(12,4,3,20170913),
+(13,5,1,20170512),
+(14,5,2,20170612),
+(15,5,3,20170913),
+(16,6,1,20160512),--16
+(17,6,2,20160612),
+(18,6,3,20160913),
+(19,7,1,20150412),
+(20,7,2,20150512),
+(21,7,3,20150913),
+(22,8,1,20190412),
+(23,8,2,20190512),
+(24,8,3,20190913),
+(25,9,1,20190412),
+(26,9,2,20190512),
+(27,9,3,20190913),
+(28,10,1,20190412),
+(29,10,2,20190512),
+(30,11,1,20190412),
+(31,11,2,20190512),
+(32,11,3,20190913),
+(33,12,1,20190403),
+(34,12,2,20190515),
+(35,12,3,20190914),
+(36,13,1,20190403),
+(37,13,2,20190515),
+(38,13,3,20190914),
+(39,14,1,20190403),
+(40,14,2,20190515),
+(41,14,3,20190914),
+(42,15,1,20190403),
+(43,15,2,20190515),
+(44,15,3,20190914); -- 44
+
+
+
+
+
+https://docs.microsoft.com/en-us/sql/t-sql/statements/alter-table-table-constraint-transact-sql?view=sql-server-ver15
+https://www.postgresql.org/docs/9.5/ddl-constraints.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+The DELETE statement conflicted with the REFERENCE constraint "FK_Livre_Auteur". The conflict occurred in database "Test2", table "dbo.Livre", column 'AuteurId'.
+The statement has been terminated.
+
+
+
+
+1) Run cmd.exe as Admin (Start > Search 'cmd' > Right-Click > Run As Admin)
+2) in CMD window run (type the code then hit Enter key) following command:
+net user postgres /del
+3) Reboot PC
+4) after reboot open cmd.exe again & run following commands:
+net user postgres postgrespass /add
+net localgroup Administrators postgres /add
+net localgroup Users postgres /delete
+runas /userostgres cmd.exe
+
+When it asks about password please input postgrespass & don`t worry if you don`t see any new symbols\inputs in cmd window. If you did all steps right then you should get new cmd window for postgres user.
+
+5) Download PostgreSQL installer (http://get.enterprisedb.com/postgres...-1-windows.exe) & move (copy/paste) it from the \Downloads folder to C:\
+6) in new cmd window for postgres user run following commands:
+cd c:\
+start postgresql-8.4.22-1-windows.exe
+
+
+
+
+
+
+

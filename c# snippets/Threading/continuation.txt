@@ -1,0 +1,13 @@
+static public void Main()
+        {
+            int a = 11, b = 44;
+            Task<int> task = Task.Run(() => a + b);
+            task.ContinueWith(affichage);
+
+        }
+
+        private static void affichage(Task<int> t)
+        {
+            int result = t.Result;
+            System.Console.WriteLine($"Le resultat est {result}");
+        }

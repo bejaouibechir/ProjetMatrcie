@@ -1,0 +1,59 @@
+exemple 1 taskk qui retourne 
+ 
+ public class Program
+    {
+        static void Main()
+        {
+            double resultat = Somme(11, 44).Result;
+        }  
+
+        async static Task<double> Somme(double x, double y)
+        {
+            double resultat = await new Arithemtique().SommeAsync(x, y);
+            return resultat;
+        }
+       
+    }
+    public class Arithemtique
+    {
+        public Task<double> SommeAsync(double x, double y)
+        {
+            Task<double> task = Task.Run(() => x + y);
+            Task.Delay(3000);
+            return task;
+        }
+    }
+
+Deuxième version de Arithmetique
+  public class Arithmetique
+    {
+        public Task<double> SommeAsync(double a,double b)
+        {
+            return Task.FromResult(a+b);
+        }
+    }
+
+Factory.StarNew
+
+ public Task<double> SommeAsync(double a,double b)
+        {
+                                       object state
+            return Task.Factory.StartNew((x) => (a + b) * int.Parse(x.ToString()), 2);
+        }
+
+Task pere fils
+Task.Factory.StartNew(() =>
+            {
+                System.Console.WriteLine($"Task père Task{Task.CurrentId}");
+                Task.Factory.StartNew (() =>
+                {
+                    System.Console.WriteLine($"Task fils Task{Task.CurrentId}");
+                },TaskCreationOptions.AttachedToParent);
+            });
+
+            System.Console.Read();
+
+
+
+
+

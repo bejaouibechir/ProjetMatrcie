@@ -1,0 +1,22 @@
+[Autorize("bechir")]
+    public class Employee :User
+    {
+        public decimal Salary { get; set; }
+    }
+
+    public class AutorizeAttribute :Attribute
+    {
+        public AutorizeAttribute(string name)
+        {
+            Name = name;
+        }
+        
+        public string Name { get; set; }
+
+        public void Validate()
+        {
+            if (Name != Environment.UserName)
+                throw new Exception("Vous n'êtes pas autorisé à utiliser cette application");
+        }
+
+    }

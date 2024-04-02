@@ -1,0 +1,43 @@
+        public async Task<string> MethodeAsynchrone(string message)
+        {
+            Debug.WriteLine("Lancement de la méthode");
+            await Task.Delay(5000);
+            return message;
+        }
+
+
+        public IAsyncResult BeginMethode(string message, AsyncCallback callback, object state)
+        {
+            var tcs = new TaskCompletionSource<string>(state);
+            var task = MethodeAsynchrone(message);
+            task.ContinueWith(t =>
+            {
+                // Gérer l'exception
+                if (t.IsFaulted)
+                    tcs.TrySetException(t.Exception.InnerExceptions);
+                //Gérer l'annulation
+                else if (t.IsCanceled)
+                    tcs.TrySetCanceled();
+                else
+                    //Cas de retour
+                    tcs.TrySetResult(t.Result);
+
+                // Invoquation du callback
+                if (callback != null)
+                    callback(tcs.Task);
+            });
+            return tcs.Task;
+        }
+
+        public string EndMethode(IAsyncResult asyncResult)
+        {
+            try
+            {
+                return ((Task<string>)asyncResult).Result;
+            }
+            catch (AggregateException ex)
+            {
+                ExceptionDispatchInfo.Capture(ex.InnerException).Throw();
+                throw;
+            }
+        }

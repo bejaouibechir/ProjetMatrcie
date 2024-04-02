@@ -1,0 +1,186 @@
+//RegexStringValidator généralisé
+
+string mailpattern = @"^[a-zA-Z\.\-_]+@([a-zA-Z\.\-_]+\.)+[a-zA-Z]{2,4}$";
+            RegexStringValidator validator = new RegexStringValidator(mailpattern);
+
+            string[] values = new string [] {"me","@yahoo.fr","me@yahoo.fr","yahoo.fr" };
+
+            foreach (var item in values)
+            {
+                try
+                {
+                    validator.Validate(item);
+                }
+                catch (ArgumentException ex)
+                {
+                    Debug.WriteLine(ex.Message);
+                }
+            }
+           
+
+
+
+//RegexStringValidator plus typé
+
+ public class Personne
+    {
+        public string Nom { get; set; }
+    }
+    public class PersonneValidator :RegexStringValidator 
+    {
+        private string _pattern;
+        public PersonneValidator(string pattern):base(pattern)
+        =>
+            _pattern = pattern;
+        public override bool CanValidate(Type type)
+        {
+            /* La logique qui teste si l'objet 
+             * est du type corrependant*/
+            throw new NotImplementedException();
+        }
+        public override void Validate(object value)
+        {
+            /* La logique qui valide l'objet en question*/
+            throw new NotImplementedException();
+        }
+    }
+
+//RegexStringValidator déclaratif 
+
+public class Personne
+    {
+        [RegexStringValidator("^[a-zA-Z]$")]
+        public string Nom { get; set; }
+        [RegexStringValidator("^[0-9]$")]
+        public int Age { get; set; }
+        [RegexStringValidator(@"^[a-zA-Z\.\-_]+@([a-zA-Z\.\-_]+\.)+[a-zA-Z]{2,4}$")]
+        public string Email { get; set; }
+    }
+
+// Create a pattern for a word that starts with letter "M"  
+string pattern = @"\b[M]\w+";  
+// Create a Regex  
+Regex rg = new Regex(pattern);  
+
+
+
+
+
+
+//RegexCompilationInfo
+
+
+
+
+
+
+
+
+//Website to test
+https://regex101.com/r/eZ1gT7/6
+
+
+//Method  to scrap content 
+
+ private static async Task Scrap(string link)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage reponse = await client.GetAsync(link);
+            reponse.EnsureSuccessStatusCode();
+
+            string Message = await reponse.Content.ReadAsStringAsync();
+
+            using (Stream stream = new FileStream(@"D:\Formation SNS ASP CORE Partie II\1.ressources\queries\scrap1.txt", FileMode.OpenOrCreate))
+            {
+                StreamWriter writer = new StreamWriter(stream);
+                writer.Write(Message);
+                writer.Flush();
+                writer.Close();
+            }
+            Console.WriteLine("Done");
+            Console.Read();
+        }
+
+
+//Get Titles 
+
+Regex regex;
+            string pattern = @"(<h2 class=""main"".*?>)(.+?)(<\/h2>)"; 
+            regex = new Regex(pattern);
+            string path = @"D:\Formation SNS ASP CORE Partie II\1.ressources\queries\contentscrap.txt";
+            string content = new StreamReader(path).ReadToEnd();
+            MatchCollection matches = regex.Matches(content);
+
+            foreach(Match match in matches)
+            {
+                Debug.WriteLine(match.Groups[2].Value);
+            }
+
+//Pattern to get authors 
+@"(<a target=""_blank"" href=.*?>)(.+?)(<\/a>)" Groups[2]
+
+//Pattern to get authors links 
+@"(<a target=""_blank"" href=.*?)(.+?)(>)" Group[2]
+
+//Pattern to get description 
+@"(<div class=""desc-content"">.*?)(.+?)(<di)";
+
+//Book link to amazon 
+@"(<a class=""book-title"" href=.*?)(.+?)(rel)"
+
+//Book Images
+@"(<img class=""book-cover"" src=)(.+?)(alt)"
+
+
+ class Program
+    {
+        static Random random;
+
+        static Program()
+        {
+            random= new Random();
+        }
+        
+        static void Main(string[] args)
+        {
+            Regex regex;
+            string path = @"D:\Formation SNS ASP CORE Partie II\1.ressources\queries\contentscrap.txt";
+            string content= new StreamReader(path).ReadToEnd();
+            MatchCollection matches;
+
+            string booklinkpattrn = @"(<img class=""book-cover"" src=)(.+?)(alt)";
+            regex = new Regex(booklinkpattrn);
+            matches = regex.Matches(content);
+            int i = 0;
+                foreach (Match match in matches)
+                {
+                   string link = match.Groups[2].Value;
+                    Debug.WriteLine(link);
+                   Task.Delay(random.Next(1000, 5000));
+                  string filename = @"D:\Formation SNS ASP CORE Partie II\1.ressources\images\"
+                                        + $"Livre{i++}.jpg";
+                  Task.Delay(random.Next(2000,5000));
+                  Scrap(link.Replace('"',' '), filename);
+
+                }
+            Console.WriteLine("Done");
+        }
+
+
+
+        private static void Scrap(string link,string filename)
+        {
+            Task.Delay(random.Next(2000, 3000));
+            using (WebClient client = new WebClient())
+            {
+                client.DownloadFile(link, filename);
+            }
+            
+        }
+    }
+
+
+
+
+
+

@@ -1,0 +1,21 @@
+ //Debug>Options>Debugging>General>Disable just my code
+        static public void Main()
+        {
+            Task t1 = Task.Factory.StartNew(() => throw new FormatException("Format"));
+            Task t2 = Task.Factory.StartNew(() => throw new StackOverflowException("StackOverFlow"));
+            Task t3 = Task.Factory.StartNew(() => throw new IndexOutOfRangeException("IndexOutOfRange"));
+
+            try
+            {
+                Task.WaitAll(t1, t2);
+            }
+            catch (AggregateException ae)
+            {
+                var ex = ae.Flatten();
+                foreach (var item in ex.InnerExceptions)
+                {
+                    System.Console.WriteLine(item.Message);
+                }
+            }
+
+        } 

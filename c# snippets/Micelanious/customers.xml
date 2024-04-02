@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="ibm850"?>
+<Customers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Customer>
+    <CustomerID>934</CustomerID>
+    <CustomerName>Ivan Sepulveda</CustomerName>
+    <PhoneNumber>(218) 555-0100</PhoneNumber>
+    <FaxNumber>(218) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 8981</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>927</CustomerID>
+    <CustomerName>Matyas Sedlar</CustomerName>
+    <PhoneNumber>(270) 555-0100</PhoneNumber>
+    <FaxNumber>(270) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 2555</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>839</CustomerID>
+    <CustomerName>Juan Morse</CustomerName>
+    <PhoneNumber>(423) 555-0100</PhoneNumber>
+    <FaxNumber>(423) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 2068</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>851</CustomerID>
+    <CustomerName>Ebru Erdogan</CustomerName>
+    <PhoneNumber>(405) 555-0100</PhoneNumber>
+    <FaxNumber>(405) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 4957</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>921</CustomerID>
+    <CustomerName>Victoria Lacusta</CustomerName>
+    <PhoneNumber>(212) 555-0100</PhoneNumber>
+    <FaxNumber>(212) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 563</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>869</CustomerID>
+    <CustomerName>Abel Tatarescu</CustomerName>
+    <PhoneNumber>(217) 555-0100</PhoneNumber>
+    <FaxNumber>(217) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 8222</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>922</CustomerID>
+    <CustomerName>Sumati Chatterjee</CustomerName>
+    <PhoneNumber>(231) 555-0100</PhoneNumber>
+    <FaxNumber>(231) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 771</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>866</CustomerID>
+    <CustomerName>Jay Bhuiyan</CustomerName>
+    <PhoneNumber>(215) 555-0100</PhoneNumber>
+    <FaxNumber>(215) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 8070</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>847</CustomerID>
+    <CustomerName>Kristiina Ivanov</CustomerName>
+    <PhoneNumber>(605) 555-0100</PhoneNumber>
+    <FaxNumber>(605) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 6793</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>844</CustomerID>
+    <CustomerName>Durdanah Abbasi</CustomerName>
+    <PhoneNumber>(201) 555-0100</PhoneNumber>
+    <FaxNumber>(201) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 9565</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>831</CustomerID>
+    <CustomerName>Bhaavan Rai</CustomerName>
+    <PhoneNumber>(308) 555-0100</PhoneNumber>
+    <FaxNumber>(308) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 290</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>890</CustomerID>
+    <CustomerName>Olya Izmaylov</CustomerName>
+    <PhoneNumber>(210) 555-0100</PhoneNumber>
+    <FaxNumber>(210) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3410</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>872</CustomerID>
+    <CustomerName>Katerina Hadrabova</CustomerName>
+    <PhoneNumber>(219) 555-0100</PhoneNumber>
+    <FaxNumber>(219) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 4747</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>828</CustomerID>
+    <CustomerName>Sercan Celik</CustomerName>
+    <PhoneNumber>(217) 555-0100</PhoneNumber>
+    <FaxNumber>(217) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 6861</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>982</CustomerID>
+    <CustomerName>Yves Belisle</CustomerName>
+    <PhoneNumber>(480) 555-0100</PhoneNumber>
+    <FaxNumber>(480) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 7024</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>945</CustomerID>
+    <CustomerName>Hoc Tran</CustomerName>
+    <PhoneNumber>(339) 555-0100</PhoneNumber>
+    <FaxNumber>(339) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 6639</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>874</CustomerID>
+    <CustomerName>Daniel Martensson</CustomerName>
+    <PhoneNumber>(225) 555-0100</PhoneNumber>
+    <FaxNumber>(225) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 9040</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>986</CustomerID>
+    <CustomerName>Neil Farrelly</CustomerName>
+    <PhoneNumber>(215) 555-0100</PhoneNumber>
+    <FaxNumber>(215) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 8803</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>937</CustomerID>
+    <CustomerName>Manca Hrastovsek</CustomerName>
+    <PhoneNumber>(205) 555-0100</PhoneNumber>
+    <FaxNumber>(205) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 6531</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>914</CustomerID>
+    <CustomerName>Chandana Shasthri</CustomerName>
+    <PhoneNumber>(803) 555-0100</PhoneNumber>
+    <FaxNumber>(803) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3228</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>814</CustomerID>
+    <CustomerName>Johanna Hoornstra</CustomerName>
+    <PhoneNumber>(210) 555-0100</PhoneNumber>
+    <FaxNumber>(210) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 2475</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>946</CustomerID>
+    <CustomerName>David safranek</CustomerName>
+    <PhoneNumber>(215) 555-0100</PhoneNumber>
+    <FaxNumber>(215) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 764</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>987</CustomerID>
+    <CustomerName>Akhil Nadar</CustomerName>
+    <PhoneNumber>(479) 555-0100</PhoneNumber>
+    <FaxNumber>(479) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 5882</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>915</CustomerID>
+    <CustomerName>Ana Florea</CustomerName>
+    <PhoneNumber>(210) 555-0100</PhoneNumber>
+    <FaxNumber>(210) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3140</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>895</CustomerID>
+    <CustomerName>Geza Roman</CustomerName>
+    <PhoneNumber>(215) 555-0100</PhoneNumber>
+    <FaxNumber>(215) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3424</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>855</CustomerID>
+    <CustomerName>Anna Mazzanti</CustomerName>
+    <PhoneNumber>(314) 555-0100</PhoneNumber>
+    <FaxNumber>(314) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1913</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>892</CustomerID>
+    <CustomerName>Bahaar Asef zade</CustomerName>
+    <PhoneNumber>(225) 555-0100</PhoneNumber>
+    <FaxNumber>(225) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 4288</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>887</CustomerID>
+    <CustomerName>Baran Jonsson</CustomerName>
+    <PhoneNumber>(458) 555-0100</PhoneNumber>
+    <FaxNumber>(458) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 8106</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>976</CustomerID>
+    <CustomerName>Alinne Matos</CustomerName>
+    <PhoneNumber>(229) 555-0100</PhoneNumber>
+    <FaxNumber>(229) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1620</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1003</CustomerID>
+    <CustomerName>Hue Ton</CustomerName>
+    <PhoneNumber>(252) 555-0100</PhoneNumber>
+    <FaxNumber>(252) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 9496</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>874</CustomerID>
+    <CustomerName>Daniel Martensson</CustomerName>
+    <PhoneNumber>(225) 555-0100</PhoneNumber>
+    <FaxNumber>(225) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 9040</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>890</CustomerID>
+    <CustomerName>Olya Izmaylov</CustomerName>
+    <PhoneNumber>(210) 555-0100</PhoneNumber>
+    <FaxNumber>(210) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3410</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1019</CustomerID>
+    <CustomerName>Dhanishta Pullela</CustomerName>
+    <PhoneNumber>(304) 555-0100</PhoneNumber>
+    <FaxNumber>(304) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 6205</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1026</CustomerID>
+    <CustomerName>Daniella Cavalcante</CustomerName>
+    <PhoneNumber>(405) 555-0100</PhoneNumber>
+    <FaxNumber>(405) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3816</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>890</CustomerID>
+    <CustomerName>Olya Izmaylov</CustomerName>
+    <PhoneNumber>(210) 555-0100</PhoneNumber>
+    <FaxNumber>(210) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3410</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>971</CustomerID>
+    <CustomerName>Dhanishta Mokkapati</CustomerName>
+    <PhoneNumber>(907) 555-0100</PhoneNumber>
+    <FaxNumber>(907) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 9571</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>913</CustomerID>
+    <CustomerName>Violetta KlanCisar</CustomerName>
+    <PhoneNumber>(225) 555-0100</PhoneNumber>
+    <FaxNumber>(225) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 8290</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>898</CustomerID>
+    <CustomerName>Gopalgobinda Sikdar</CustomerName>
+    <PhoneNumber>(307) 555-0100</PhoneNumber>
+    <FaxNumber>(307) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 141</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>835</CustomerID>
+    <CustomerName>Dominic Davignon</CustomerName>
+    <PhoneNumber>(209) 555-0100</PhoneNumber>
+    <FaxNumber>(209) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 4859</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>802</CustomerID>
+    <CustomerName>Cosmina Vlad</CustomerName>
+    <PhoneNumber>(505) 555-0100</PhoneNumber>
+    <FaxNumber>(505) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1954</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>911</CustomerID>
+    <CustomerName>Liidia Lepp</CustomerName>
+    <PhoneNumber>(276) 555-0100</PhoneNumber>
+    <FaxNumber>(276) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 46</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>818</CustomerID>
+    <CustomerName>Liia Orav</CustomerName>
+    <PhoneNumber>(252) 555-0100</PhoneNumber>
+    <FaxNumber>(252) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1428</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>838</CustomerID>
+    <CustomerName>Pavel Bogdanov</CustomerName>
+    <PhoneNumber>(339) 555-0100</PhoneNumber>
+    <FaxNumber>(339) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1035</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>978</CustomerID>
+    <CustomerName>Baalaamjali Devulapalli</CustomerName>
+    <PhoneNumber>(505) 555-0100</PhoneNumber>
+    <FaxNumber>(505) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 40</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>944</CustomerID>
+    <CustomerName>Ida Celma</CustomerName>
+    <PhoneNumber>(319) 555-0100</PhoneNumber>
+    <FaxNumber>(319) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 4308</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1017</CustomerID>
+    <CustomerName>David Novacek </CustomerName>
+    <PhoneNumber>(423) 555-0100</PhoneNumber>
+    <FaxNumber>(423) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 7597</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1020</CustomerID>
+    <CustomerName>Hai Banh</CustomerName>
+    <PhoneNumber>(252) 555-0100</PhoneNumber>
+    <FaxNumber>(252) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1446</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>915</CustomerID>
+    <CustomerName>Ana Florea</CustomerName>
+    <PhoneNumber>(210) 555-0100</PhoneNumber>
+    <FaxNumber>(210) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 3140</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>976</CustomerID>
+    <CustomerName>Alinne Matos</CustomerName>
+    <PhoneNumber>(229) 555-0100</PhoneNumber>
+    <FaxNumber>(229) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1620</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1034</CustomerID>
+    <CustomerName>Aishwarya Dantuluri</CustomerName>
+    <PhoneNumber>(209) 555-0100</PhoneNumber>
+    <FaxNumber>(209) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 1421</PostalAddressLine1>
+  </Customer>
+  <Customer>
+    <CustomerID>1046</CustomerID>
+    <CustomerName>Christian Couet</CustomerName>
+    <PhoneNumber>(212) 555-0100</PhoneNumber>
+    <FaxNumber>(212) 555-0101</FaxNumber>
+    <PostalAddressLine1>PO Box 9378</PostalAddressLine1>
+  </Customer>
+</Customers>

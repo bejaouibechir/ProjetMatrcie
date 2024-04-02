@@ -1,0 +1,19 @@
+namespace Exemples.String.Extensions
+{
+    static public class StringExtension 
+    {
+        static public string Capitalize(this string str)
+        {
+           string result = str;
+            string firstCaracter = str[0].ToString();
+            string firstCaracterUpper = firstCaracter.ToUpper();
+            result = result.Remove(0, 1);
+            result = result.Insert(0, firstCaracterUpper);
+            return result;
+        }
+    }
+}
+
+
+
+ 

@@ -1,0 +1,27 @@
+static public void Main()
+        {
+            Task task1 = Task.Run(() => Process1());
+            Task task2 = Task.Run(() => Process2());
+            Task task3 = Task.Run(() => Process3());
+            
+            System.Console.Read();
+        }
+
+        static int Process1()
+        {
+            Thread.Sleep(2000);
+            System.Console.WriteLine("Lancement du process 1");
+            return 1;
+        }
+        static int Process2()
+        {
+            Thread.Sleep(5000);
+            System.Console.WriteLine("Lancement du process 2");
+            return 1;
+        }
+        static int Process3()
+        {
+            Thread.Sleep(1000);
+            System.Console.WriteLine("Lancement du process 3");
+            return 1;
+        }

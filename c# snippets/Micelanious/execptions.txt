@@ -1,0 +1,152 @@
+1. IO Exception FileNotFoundExcpetion
+
+
+2. IndexOutOfRange Exception 
+//Code correct
+int[,] montableau = new int[3, 2];
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 2; j++)
+                {
+                    montableau[i, j] = i + j;
+                }
+            }
+
+//Code incorrect
+ for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j <= 2; j++)
+                {
+                    montableau[i, j] = i + j;
+                }
+            }
+
+
+
+3. ArrayTypeMismatchException 
+
+string[] array1 = { "cat", "dog", "fish" };
+        object[] array2 = array1;
+        array2[0] = 5;
+
+4. NullReferenceException
+ 
+static public void Main(string[] args)
+        {
+            Personne personne = getPersonneFromService();
+            Console.Read();
+        }
+
+        static Personne getPersonneFromService()
+        {
+            return null;
+        }
+5. InvalidCastException 
+
+ RemoteClass instance1 = new RemoteClass();
+ object instance2 = instance1;
+ LocalClass instance3 = (LocalClass)instance2;
+
+6. OutOfMemoryException
+// Tentative de création d'une chaîne de 2,1 milliards de caractères. // ... Il en résulte une erreur de mémoire insuffisante. // ... Il faudrait 4,2 milliards d'octets (4 gigaoctets).
+
+ StringBuilder sb = new StringBuilder(1, 1);
+ sb.Insert(0, "x", 2);
+
+
+7.Format exception 
+ Console.WriteLine("Entrer la première opérande");
+int a = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Entrer la deuxième opérande");
+int b = Convert.ToInt32(Console.ReadLine());
+
+int result = a / b;
+
+
+InnerException exemple 1
+
+ public class Ex1 : Exception
+    {
+        /*
+         Ex2 ex2 = new Ex2("Ex2");
+            try
+            {
+                throw new Ex1("Ex1",ex2);
+            }
+            catch (Ex1 ex1)
+            {
+                string message = ex1.Message;
+                throw ex2;
+            }
+         
+         */
+
+        public Ex1(string message) :base(message)
+        {
+
+        }
+        public Ex1(string message,Exception inner) : base(message,inner)
+        {
+
+        }
+
+    }
+    public class Ex2 : Exception
+    {
+        public Ex2(string message) : base(message)
+        {
+
+        }
+        public Ex2(string message, Exception inner) : base(message, inner)
+        {
+
+        }
+    }
+
+Inner exception exemple 2
+
+double a=0, b=0,result =0;
+            try
+            {
+                try
+                {
+                    Console.WriteLine("Entrer la première opérande");
+                    a = double.Parse(Console.ReadLine());
+                    Console.WriteLine("Entrer la deuxième opérande");
+                    b = double.Parse(Console.ReadLine());
+                }
+                catch (FormatException dex)
+                {
+                    Debug.Write(dex.Message);
+                }
+                result = a / b;
+                using (Stream stream = new FileStream(@"C:\temp\test.txt",FileMode.Open))
+                {
+                    StreamWriter writer = new StreamWriter(stream);
+                    writer.Write(result);
+                    writer.Flush();
+                    writer.Close();
+                }
+            }
+            catch (FileNotFoundException fex)
+            {
+                Debug.Write(fex.Message);
+            }
+            Console.WriteLine(result);
+
+
+
+
+
+
+https://dotnettutorials.net/lesson/inner-exception-csharp/
+
+
+
+
+
+
+
+
+
